@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARG: Computador da CEO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #001f3f;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        #options {
+            margin-top: 20px;
+        }
+        .section {
+            display: none;
+            margin-top: 20px;
+        }
+        .scrollable {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        #backButton {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        var senhaCorreta = "htmsk2";
+
+        function verificarSenha() {
+            var senhaDigitada = document.getElementById("password").value;
+            if (senhaDigitada === senhaCorreta) {
+                document.getElementById("options").style.display = "block";
+                document.getElementById("passwordInput").style.display = "none";
+            } else {
+                alert("Senha incorreta. Tente novamente.");
+            }
+        }
+
+        function mostrarSecao(secao) {
+            var secoes = document.getElementsByClassName("section");
+            for (var i = 0; i < secoes.length; i++) {
+                secoes[i].style.display = "none";
+            }
+            document.getElementById(secao).style.display = "block";
+        }
+
+        function mostrarTexto(texto) {
+            document.getElementById("textoExibido").innerText = texto;
+            mostrarSecao("textoExibido");
+        }
+
+        function voltar() {
+            document.getElementById("options").style.display = "block";
+            var secoes = document.getElementsByClassName("section");
+            for (var i = 0; i < secoes.length; i++) {
+                secoes[i].style.display = "none";
+            }
+        }
+    </script>
+
+    <div id="passwordInput">
+        <label for="password">Digite a senha para entrada:</label>
+        <input type="password" id="password" placeholder="Digite a senha">
+        <button onclick="verificarSenha()">Entrar</button>
+    </div>
+
+    <div id="options" style="display: none;">
+        <h2>Escolha uma opção:</h2>
+        <button onclick="mostrarSecao('documentos')">Documentos</button>
+        <button onclick="mostrarSecao('emails')">Emails</button>
+        <button onclick="mostrarSecao('arquivosConfidenciais')">Arquivos Confidenciais</button>
+    </div>
+
+    <div id="documentos" class="section">
+        <h2>Documentos</h2>
+        <div class="scrollable">
+            <button onclick="mostrarTexto('Olá, aqui é a Maria. Criei este documento para falar sobre o nosso primeiro experimento, mas não consegui pensar em um nome adequado, então decidi chamá-lo com o nome da minha mãe, Charlot. Fiz um breve desenho usando as únicas cores de giz que eu tinha: azul, laranja, vermelho e verde. Enfim, eu a imprimi usando a impressora 3D na sala de artes e apliquei uma pequena dose de ervas mágicas nela. E FUNCIONOU! No entanto, não sei onde ela está; saiu correndo assim que ganhou vida, como se tivesse consciência.')">Documento 1</button>
+            <button onclick="mostrarTexto('Oi, eu não sei mais o meu nome; acredito que seja Maria ou Mariana, talvez? Criei um novo tipo de erva chamada \'erva suprema\' para não ter que usar mais a impressora 3D, que demorava horas. Então, é mais fácil usar pessoas para realizar nossos experimentos! Eu comi uma pequena dose da erva e estou enfrentando alguns problemas, como tontura, e minha pele está ficando totalmente amarela, mas isso é irrelevante! Por fim, usei um dos nossos professores, o Rafael, e funcionou, mas ele não se move; parece que virou um boneco gigante.')">Documento 2</button>
+            <button onclick="mostrarTexto('EU ENCONTREI A CHARLOT, MAS ELA ESTÁ MUITO ESTRANHA. ELA CITOU UM TAL DE JIMI OU JIMMY. ELA COMEU A ÚLTIMA ERVA SUPREMA QUE HAVIA RESTADO. NESTE MOMENTO, ESTOU SENDO PROCURADA POR UM COELHO GIGANTE CHAMADO PAULO! POR FAVOR, PAREM COM OS EXPERIMENTOS. EU SOU UM MONSTRO; NÃO DEVERÍAMOS TER FEITO ISSO!')">Documento 3</button>
+        </div>
+        <br>
+        <button onclick="voltar()">Voltar</button>
+    </div>
+
+    <div id="emails" class="section">
+        <h2>Emails</h2>
+        <div class="scrollable">
+            <button onclick="mostrarTexto('Olá, senhora Wymell, aqui é o Professor José! Estou muito feliz por me permitir trabalhar com a Maria. Neste momento, acabei de montar a impressora 3D e vamos tentar criar nosso primeiro experimento!')">Email 1</button>
+            <button onclick="mostrarTexto('Olá, Senhora Wymell, aqui é o José novamente. A Maria desenhou o que parece ser um cupcake para testarmos a impressora 3D!')">Email 2</button>
+            <button onclick="mostrarTexto('Olá, Senhora Wymell, aqui é o José, e eu ADOREI a ideia de criar experimentos. Agora, vou me tornar um! Teremos que realizar diversos estudos para que eu faça um desenho, imprima-o na impressora 3D e aplique meu DNA, além das ervas mágicas. Acredito que isso funcione. Estou ansioso pela vida eterna!')">Email 3</button>
+        </div>
+        <br>
+        <button onclick="voltar()">Voltar</button>
+    </div>
+
+    <div id="arquivosConfidenciais" class="section">
+        <h2>Arquivos Confidenciais</h2>
+        <div class="scrollable">
+            <button onclick="mostrarTexto('Professora Rafaela, 45 anos, professora de Matemática, foi usada para testar a erva suprema. Infelizmente, houve uma falha, e agora ela parece uma espécie de pássaro quadrado amarelo com bico azul. Ela não se move, mas aparenta estar consciente, presa nessa condição para sempre.')">Arquivo 1</button>
+            <button onclick="mostrarTexto('Professor José, 38 anos, professor de Informática, foi utilizado para criar um experimento e ofereceu seu DNA. O experimento foi bem-sucedido!')">Arquivo 2</button>
+            <button onclick="mostrarTexto('A creche: Nós, da equipe corporativa, decidimos criar uma creche para aumentar nosso alcance com as crianças pequenas! Porém, vamos ser inovadores. Precisamos de algo único em comparação com outras creches, então decidimos adicionar três mascotes para atrair as crianças. Contudo, para dar vida a esses mascotes, precisamos de 3 pessoas.')">Arquivo 3</button>
+        </div>
+        <br>
+        <button onclick="voltar()">Voltar</button>
+    </div>
+
+    <div id="textoExibido" class="section">
+        <h2>Texto Exibido</h2>
+        <p id="textoExibido"></p>
+        <br>
+        <button onclick="voltar()">Voltar</button>
+    </div>
+
+</body>
+</html>
